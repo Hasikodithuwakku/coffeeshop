@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Products | Coffee Haven</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="products-page">
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">Coffee<span>.</span></a>
+      <ul class="menu-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contacts Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="products-hero">
+    <h1>Our Signature Coffee Products</h1>
+    <p>Discover our handpicked selection of premium coffees and accessories. Each blend is crafted to perfection, offering unique flavors and aromas for every coffee lover.</p>
+  </section>
+  <section class="products-grid">
+    <div class="product-card">
+      <img src="images/espresso.jpg" alt="Espresso Blend">
+      <h3>Espresso Blend</h3>
+      <p class="product-desc">Rich, bold, and smooth. Perfect for your morning shot. 100% Arabica beans, dark roasted for a classic Italian taste.</p>
+      <span class="product-price">$12.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/latte.jpg" alt="Latte Art Kit">
+      <h3>Latte Art Kit</h3>
+      <p class="product-desc">Everything you need to create beautiful latte art at home. Includes a milk frother, pitcher, and stencils.</p>
+      <span class="product-price">$24.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/coldbrew.jpg" alt="Cold Brew Pack">
+      <h3>Cold Brew Pack</h3>
+      <p class="product-desc">Smooth, refreshing cold brew for hot days and cool nights. Includes a cold brew bottle and our signature blend.</p>
+      <span class="product-price">$15.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/frenchpress.jpg" alt="French Press">
+      <h3>French Press</h3>
+      <p class="product-desc">Classic brewing method for a rich, full-bodied cup. Durable glass and stainless steel design.</p>
+      <span class="product-price">$19.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/cappuccino.jpg" alt="Cappuccino Beans">
+      <h3>Cappuccino Beans</h3>
+      <p class="product-desc">Aromatic blend with a creamy finish. Perfect for frothy cappuccinos and morning indulgence.</p>
+      <span class="product-price">$13.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/mocha.jpg" alt="Mocha Delight">
+      <h3>Mocha Delight</h3>
+      <p class="product-desc">Chocolate-infused coffee blend for a sweet, decadent treat. Great for dessert coffees.</p>
+      <span class="product-price">$14.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/americano.jpg" alt="Americano Roast">
+      <h3>Americano Roast</h3>
+      <p class="product-desc">Smooth and balanced, with subtle nutty notes. Ideal for a classic Americano experience.</p>
+      <span class="product-price">$11.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/macchiato.jpg" alt="Caramel Macchiato Syrup">
+      <h3>Caramel Macchiato Syrup</h3>
+      <p class="product-desc">Add a touch of caramel sweetness to your homemade macchiatos and lattes.</p>
+      <span class="product-price">$8.99</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/decaf.jpg" alt="Decaf Blend">
+      <h3>Decaf Blend</h3>
+      <p class="product-desc">All the flavor, none of the caffeine. Enjoy a smooth cup any time of day.</p>
+      <span class="product-price">$13.49</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/vanilla.jpg" alt="Vanilla Infused Coffee">
+      <h3>Vanilla Infused Coffee</h3>
+      <p class="product-desc">Subtle vanilla aroma and taste, perfect for a gentle, sweet morning brew.</p>
+      <span class="product-price">$14.49</span>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <!-- ...add more as needed... -->
+  </section>
+  <footer class="products-footer">
+    <p>&copy; 2025 Coffee Haven. All rights reserved.</p>
+  </footer>
+  <script>
+    // Helper: get userId from localStorage (set after login/signup)
+    function getUserId() {
+      return localStorage.getItem('userId');
+    }
+
+    // Add to cart logic for static products
+    document.querySelectorAll('.product-card').forEach(function(card) {
+      card.querySelector('.add-cart-btn').addEventListener('click', function() {
+        const name = card.querySelector('h3').innerText;
+        const desc = card.querySelector('.product-desc').innerText;
+        const price = parseFloat(card.querySelector('.product-price').innerText.replace('$',''));
+        const image = card.querySelector('img').getAttribute('src');
+        const userId = getUserId();
+        if (!userId) {
+          alert('Please log in to add items to your cart.');
+          window.location.href = 'login.html';
+          return;
+        }
+        // Get all carts from localStorage
+        let allCarts = JSON.parse(localStorage.getItem('allCarts')) || {};
+        let cart = allCarts[userId] || { items: [] };
+        // Check if product already in cart
+        let idx = cart.items.findIndex(item => item.name === name);
+        if (idx > -1) {
+          cart.items[idx].quantity += 1;
+        } else {
+          cart.items.push({ name, desc, price, image, quantity: 1 });
+        }
+        allCarts[userId] = cart;
+        localStorage.setItem('allCarts', JSON.stringify(allCarts));
+        // Redirect to cart details page
+        window.location.href = 'product-cart-details.html';
+      });
+    });
+  </script>
+</body>
+</html>

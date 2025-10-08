@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Coffee Haven</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-image: url('../images/welcome.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .welcome-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+    .welcome-box {
+      background: rgba(34,24,16,0.92);
+      border-radius: 24px;
+      padding: 48px 36px;
+      max-width: 520px;
+      color: #fff;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      text-align: center;
+      position: relative;
+    }
+    .welcome-box h1, .creative-coffee-haven {
+      font-size: 2.8rem;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      font-family: 'Pacifico', cursive, serif;
+      background: linear-gradient(270deg, #ffd7b3, #fffbe6, #ffb97a, #ffd7b3);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: shineText 3s linear infinite;
+    }
+    @keyframes shineText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .welcome-box p {
+      font-size: 1.18rem;
+      color: #fffbe6;
+      margin-bottom: 32px;
+    }
+    .welcome-coffee-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      border: 4px solid #fff5e6;
+      background: #fff;
+      margin-bottom: 18px;
+    }
+    .welcome-btns {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+    .welcome-btn {
+      background: #ffd7b3;
+      color: #221810;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      transition: background 0.2s, color 0.2s;
+    }
+    .welcome-btn:hover {
+      background: #fff5e6;
+      color: #c47c2d;
+    }
+    .welcome-footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 18px 0 8px 0;
+      color: #a67c52;
+      font-size: 1rem;
+      background: transparent;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="welcome-container" style="position:absolute; top:60px; left:60px; text-align:left; max-width:600px;">
+  <h1 class="creative-coffee-haven" style="margin-left:-320px;">Coffee Haven</h1>
+    <p style="font-size:1.18rem; color:#fffbe6; margin-bottom:32px;">
+      <span style="font-family:'Lobster', cursive; font-size:1.35rem; color:#ffe4b5; letter-spacing:1px; text-shadow:0 2px 12px rgba(0,0,0,0.18); display:inline-block;">Welcome to the heart of coffee culture.</span><br>
+      <span style="font-family:'Lobster', cursive; font-size:1.35rem; color:#ffe4b5; letter-spacing:1px; text-shadow:0 2px 12px rgba(0,0,0,0.18); display:inline-block;">Savor the aroma, taste the passion.</span><br>
+      <span style="font-family:'Lobster', cursive; font-size:1.35rem; color:#ffe4b5; letter-spacing:1px; text-shadow:0 2px 12px rgba(0,0,0,0.18); display:inline-block;">Join our community and experience the perfect blend of flavor and comfort.</span><br>
+      <span style="color:#ffd7b3;font-weight:600;"><br><br>Start your journey with a cup of inspiration!</span>
+    </p>
+    <div style="display:flex; gap:24px; justify-content:flex-start; margin-left:-300px;">
+      <button class="welcome-btn" onclick="window.location.href='signup.html'">Sign Up</button>
+      <button class="welcome-btn" onclick="window.location.href='login.html'">Login</button>
+    </div>
+  </div>
+  <footer class="welcome-footer">
+    &copy; 2025 Coffee Haven. All rights reserved.
+  </footer>
+</body>
+</html>
