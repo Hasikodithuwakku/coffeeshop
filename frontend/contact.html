@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+       input, textarea {
+           color: #fff !important;
+           background: rgba(0,0,0,0.2);
+           border: 1px solid #fff;
+       }
+       ::placeholder {
+           color: #fff !important;
+           opacity: 0.7;
+       }
+       #button {
+           color: #8B4513 !important;
+       }
+   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form contact us</title>
+       <link rel="stylesheet" href="style.css">
+       <style>
+           input, textarea {
+               color: #fff !important;
+               background: rgba(0,0,0,0.2);
+               border: 1px solid #fff;
+           }
+           ::placeholder {
+               color: #fff !important;
+               opacity: 0.7;
+           }
+       </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Coffee<span>.</span></a>
+            <ul class="menu-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contacts Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container4">
+        <form>
+                        <h1>Contact Us Form</h1>
+                        <input type="text" id="firstName" placeholder="First Name" required>
+                        <input type="text" id="lastName" placeholder="Last Name" required>
+                        <input type="email" id="email" placeholder="Email" required>
+                        <input type="text" id="mobile" placeholder="Mobile" required>
+                        <h4>Type Your Massage Here</h4>
+                        <textarea id="message" required></textarea>
+                        <input type="submit" value="send" id="button">
+                </form>
+                <script>
+                document.querySelector('form').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    try {
+                        const res = await fetch('/api/contact', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ name, email, message })
+                        });
+                        const data = await res.json();
+                        if (data.success) {
+                            alert('Message sent successfully!');
+                            document.querySelector('form').reset();
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    } catch {
+                        alert('Network error');
+                    }
+                });
+                </script>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product & Cart Details</title>
+  <link rel="stylesheet" href="product-cart-details.css">
+</head>
+<body>
+  <div class="container">
+    <div class="section-box">
+      <h1>Product Details</h1>
+      <div class="product-section" id="selected-product-section">
+        <img id="selected-product-image" src="../img/coffee-hero-bg.jpg" alt="Product Image" class="product-image">
+        <div class="product-info">
+          <h2 id="selected-product-name">Product Name</h2>
+          <p id="selected-product-desc">Product description goes here.</p>
+          <p id="selected-product-price">Price: $0.00</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-box">
+      <h1>Cart Details</h1>
+      <div class="cart-section">
+        <table id="cart-table" class="creative-cart-table">
+          <thead>
+            <tr>
+              <th style="width: 35%">Product</th>
+              <th style="width: 15%">Price</th>
+              <th style="width: 20%">Quantity</th>
+              <th style="width: 15%">Subtotal</th>
+              <th style="width: 15%">Action</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items"></tbody>
+        </table>
+        <p id="cart-total">Total: $0.00</p>
+      </div>
+    </div>
+    <div class="section-box">
+      <h1>Payment Method</h1>
+      <div class="payment-section">
+        <label for="payment-method" class="payment-label">Choose Payment Method:</label>
+        <div class="custom-select-wrapper">
+          <select id="payment-method" class="custom-select">
+            <option value="credit">💳 Credit Card</option>
+            <option value="paypal">🅿️ PayPal</option>
+            <option value="cash">💵 Cash on Delivery</option>
+          </select>
+        </div>
+      </div>
+      <button class="checkout-btn creative-checkout-btn">
+        <span>🛒</span> Checkout Securely
+      </button>
+      <button class="back-btn creative-back-btn" onclick="window.location.href='products.html'">
+        <span style="font-size:1.2em;vertical-align:middle;">&#8592;</span> Back to Products
+      </button>
+    </div>
+  </div>
+  <style>
+    .section-box {
+      background: #f7f3ed;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      margin-bottom: 32px;
+      padding: 32px 28px 24px 28px;
+    }
+    .creative-cart-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 12px;
+      margin-top: 18px;
+    }
+    .creative-cart-table th, .creative-cart-table td {
+      background: #faf7f2;
+      padding: 16px 18px;
+      text-align: center;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .creative-cart-table th {
+      background: #f3e9e1;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #e0d2c1;
+    }
+    .creative-cart-table td img {
+      border-radius: 8px;
+      margin-right: 10px;
+      vertical-align: middle;
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .creative-cart-table td {
+      vertical-align: middle;
+    }
+    .qty-btn {
+      background: #eee;
+      border: none;
+      padding: 6px 14px;
+      margin: 0 6px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: bold;
+    }
+    .qty-btn:hover {
+      background: #d6cfc7;
+    }
+    .qty-val {
+      min-width: 28px;
+      display: inline-block;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .cancel-btn {
+      background: linear-gradient(90deg, #ffbcbc 0%, #ffdddd 100%);
+      color: #a00;
+      border: none;
+      padding: 6px 18px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 500;
+      box-shadow: 0 1px 4px rgba(255,0,0,0.04);
+    }
+    .cancel-btn:hover {
+      background: linear-gradient(90deg, #ff8a8a 0%, #ffbcbc 100%);
+      color: #fff;
+    }
+    .payment-label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #6f4e37;
+      letter-spacing: 0.5px;
+    }
+    .custom-select-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .custom-select {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1.5px solid #d6cfc7;
+      background: #fff8f2;
+      font-size: 1.08rem;
+      color: #543621;
+      font-weight: 500;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: border 0.2s;
+    }
+    .custom-select:focus {
+      border: 1.5px solid #6f4e37;
+    }
+    .creative-checkout-btn {
+      background: linear-gradient(90deg, #ffecd2 0%, #fcb69f 100%);
+      color: #543621;
+      border: none;
+      padding: 14px 38px;
+      border-radius: 10px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 12px rgba(252,182,159,0.10);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .creative-checkout-btn:hover {
+      background: linear-gradient(90deg, #fcb69f 0%, #ffecd2 100%);
+      color: #fff;
+    }
+    .creative-back-btn {
+      background: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+      color: #3a2c5a;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 10px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      margin-left: 12px;
+      box-shadow: 0 2px 10px rgba(142,197,252,0.10);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .creative-back-btn:hover {
+      background: linear-gradient(90deg, #8ec5fc 0%, #e0c3fc 100%);
+      color: #fff;
+    }
+    .qty-btn {
+      background: #eee;
+      border: none;
+      padding: 4px 10px;
+      margin: 0 4px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .qty-btn:hover {
+      background: #ccc;
+    }
+    .qty-val {
+      min-width: 24px;
+      display: inline-block;
+      text-align: center;
+    }
+    .cancel-btn {
+      background: #ffdddd;
+      color: #a00;
+      border: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cancel-btn:hover {
+      background: #ffbbbb;
+    }
+    .back-btn {
+      background: #eee;
+      color: #333;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 16px;
+      margin-left: 12px;
+      transition: background 0.2s;
+    }
+    .back-btn:hover {
+      background: #ccc;
+    }
+  </style>
+  <script>
+    // Helper: get userId from localStorage (set after login/signup)
+    function getUserId() {
+      return localStorage.getItem('userId');
+    }
+
+    // Load cart for logged-in user from localStorage and display in table
+    function renderCart() {
+      const userId = getUserId();
+      let allCarts = JSON.parse(localStorage.getItem('allCarts')) || {};
+      const cart = allCarts[userId] || { items: [] };
+      const tbody = document.getElementById('cart-items');
+      tbody.innerHTML = '';
+      let total = 0;
+      cart.items.forEach((item, idx) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><img src="${item.image}" alt="${item.name}" style="width:40px;height:40px;vertical-align:middle;"> ${item.name}</td>
+          <td>$${item.price.toFixed(2)}</td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(${idx}, -1)">-</button>
+            <span class="qty-val">${item.quantity}</span>
+            <button class="qty-btn" onclick="updateQty(${idx}, 1)">+</button>
+          </td>
+          <td>$${subtotal.toFixed(2)}</td>
+          <td><button class="cancel-btn" onclick="removeItem(${idx})">Cancel</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
+    }
+
+    function updateQty(idx, change) {
+      const userId = getUserId();
+      let allCarts = JSON.parse(localStorage.getItem('allCarts')) || {};
+      let cart = allCarts[userId] || { items: [] };
+      if (cart.items[idx]) {
+        cart.items[idx].quantity += change;
+        if (cart.items[idx].quantity < 1) cart.items[idx].quantity = 1;
+        allCarts[userId] = cart;
+        localStorage.setItem('allCarts', JSON.stringify(allCarts));
+        renderCart();
+      }
+    }
+
+    function removeItem(idx) {
+      const userId = getUserId();
+      let allCarts = JSON.parse(localStorage.getItem('allCarts')) || {};
+      let cart = allCarts[userId] || { items: [] };
+      cart.items.splice(idx, 1);
+      allCarts[userId] = cart;
+      localStorage.setItem('allCarts', JSON.stringify(allCarts));
+      renderCart();
+    }
+
+    // Show last added product details below the product details section
+    function showLastAddedProduct() {
+      const userId = getUserId();
+      let allCarts = JSON.parse(localStorage.getItem('allCarts')) || {};
+      const cart = allCarts[userId] || { items: [] };
+      if (cart.items.length > 0) {
+        const lastProduct = cart.items[cart.items.length - 1];
+        document.getElementById('selected-product-image').src = lastProduct.image;
+        document.getElementById('selected-product-name').innerText = lastProduct.name;
+        document.getElementById('selected-product-desc').innerText = lastProduct.desc;
+        document.getElementById('selected-product-price').innerText = `Price: $${lastProduct.price.toFixed(2)}`;
+      }
+    }
+    renderCart();
+    showLastAddedProduct();
+  </script>
+  </div>
+</body>
+</html>
